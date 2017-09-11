@@ -27,7 +27,6 @@ HEADERS  += View/mainview.h \
 
 FORMS    += View/mainview.ui
 
-QMAKE_CXXFLAGS = -std=c++11
 
 RESOURCES += \
     resources.qrc
