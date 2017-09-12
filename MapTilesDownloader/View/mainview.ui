@@ -395,12 +395,12 @@
             <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeType">
-            <enum>QSizePolicy::Maximum</enum>
+            <enum>QSizePolicy::Fixed</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>3</width>
-             <height>18</height>
+             <width>7</width>
+             <height>20</height>
             </size>
            </property>
           </spacer>
@@ -685,7 +685,7 @@
      <x>0</x>
      <y>0</y>
      <width>481</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
