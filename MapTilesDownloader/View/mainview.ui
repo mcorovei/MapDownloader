@@ -348,7 +348,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>200</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -399,7 +399,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>10</width>
+             <width>3</width>
              <height>18</height>
             </size>
            </property>
@@ -422,6 +422,9 @@
           <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -454,7 +457,7 @@
          <property name="title">
           <string/>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>10</x>
@@ -682,7 +685,7 @@
      <x>0</x>
      <y>0</y>
      <width>481</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
