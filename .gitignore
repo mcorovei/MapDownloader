@@ -1,4 +1,5 @@
 *.o
+*.pro.user
 MapTilesDownloader/bin/release/Makefile
 MapTilesDownloader/bin/release/ui_mainview.h
 MapTilesDownloader/bin/release/release/moc_mapdownloader.cpp
@@ -11,8 +12,4 @@ MapTilesDownloader/bin/release/release/moc_startup.cpp
 MapTilesDownloader/bin/release/release/moc_mainviewmanager.cpp
 MapTilesDownloader/bin/release/release/moc_mainview.cpp
 MapTilesDownloader/bin/release/release/MapDownloader.exe
-MapTilesDownloader/MapTilesDownloader.pro.user
-MapTilesDownloader/MapTilesDownloader.pro.user
-MapTilesDownloader/MapTilesDownloader.pro.user
-MapTilesDownloader/MapTilesDownloader.pro.user
 MapTilesDownloader/MapTilesDownloader.pro.user
