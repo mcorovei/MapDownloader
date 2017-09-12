@@ -250,7 +250,7 @@ namespace Ps
                 }
                 default:
                 {
-                    qDebug(reply->errorString().toLatin1());
+                    qDebug() << reply->errorString();
                     emit NotifyStatusMessage(reply->errorString().toLatin1());
                     ok = false;
                     break;
