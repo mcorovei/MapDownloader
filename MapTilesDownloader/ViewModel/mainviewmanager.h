@@ -17,8 +17,8 @@ namespace Ps{
     private:
         MainView& m_mainView;
         MapDownloader& m_mapDownload;
-        void WireControls();
-        void WireStatus();
+        bool WireControls();
+        bool WireStatus();
 
         explicit MainViewManager(const MainViewManager& rhs) = delete;
         MainViewManager& operator= (const MainViewManager& rhs) = delete;

@@ -124,6 +124,7 @@ namespace Ps
 
     QList<Tile*> MapDownloader::SelectTiles(bool output)
     {
+        emit NotifyStatusMessage("Calculating tiles ...");
         QList<Tile*> tileList = *new QList<Tile*>;
         for(auto z = m_zoomMin; z <= m_zoomMax; z++)
         {
@@ -317,12 +318,12 @@ namespace Ps
 
     long MapDownloader::lat2tiley(double lat, quint16 zoom)
     {
-        auto lata = lat*M_PI/180;
+        auto lata = lat*M_PI/180.0;
         return (long)((1 - qLn(qTan(lata) + 1/qCos(lata))/M_PI)/2 * qPow(2,zoom));
     }
 
     long MapDownloader::lon2tilex(double lon, quint16 zoom)
     {
-        return (long) ((lon+180)/360 * qPow(2,zoom));
+        return (long) ((lon+180.0)/360.0 * qPow(2,zoom));
     }
 }

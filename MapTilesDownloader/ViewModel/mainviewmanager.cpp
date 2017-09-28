@@ -11,36 +11,44 @@ namespace Ps
         m_mainView(mainView),
         m_mapDownload(mapDownload)
     {
-        WireControls();
-        WireStatus();
+        bool ok = WireControls();
+        ok &= WireStatus();
+
+        if (ok)
+            m_mainView.onStatusMessage("Initialization successful ...");
+        else
+            m_mainView.onStatusMessage("Initialization failed!");
     }
 
-    void MainViewManager::WireControls()
+    bool MainViewManager::WireControls()
     {
-          connect(&m_mainView, &MainView::NotifyUrlChanged, &m_mapDownload, &MapDownloader::onUrlChanged);
-          connect(&m_mainView, &MainView::NotifyLatitudeMinChanged, &m_mapDownload, &MapDownloader::onLatitudeMinChanged);
-          connect(&m_mainView, &MainView::NotifyLatitudeMaxChanged, &m_mapDownload, &MapDownloader::onLatitudeMaxChanged);
-          connect(&m_mainView, &MainView::NotifyLongitudeMinChanged, &m_mapDownload, &MapDownloader::onLongitudeMinChanged);
-          connect(&m_mainView, &MainView::NotifyLongitudeMaxChanged, &m_mapDownload, &MapDownloader::onLongitudeMaxChanged);
-          connect(&m_mainView, &MainView::NotifyZoomMinChanged, &m_mapDownload, &MapDownloader::onZoomMinChanged);
-          connect(&m_mainView, &MainView::NotifyZoomMaxChanged, &m_mapDownload, &MapDownloader::onZoomMaxChanged);
-          connect(&m_mainView, &MainView::NotifyDestinationDirChanged, &m_mapDownload, &MapDownloader::onDestinationDirChanged);
-          connect(&m_mainView, &MainView::NotifyStopClicked, &m_mapDownload, &MapDownloader::onStopClicked);
-          connect(&m_mainView, &MainView::NotifyStartFromZoomChanged, &m_mapDownload, &MapDownloader::onStartFromZoomChanged);
-          connect(&m_mainView, &MainView::NotifyStartFromTileXChanged, &m_mapDownload, &MapDownloader::onStartFromTileXChanged);
-          connect(&m_mainView, &MainView::NotifyStartFromTileYChanged, &m_mapDownload, &MapDownloader::onStartFromTileYChanged);
-          connect(&m_mainView, &MainView::NotifyStartFromChanged, &m_mapDownload, &MapDownloader::onStartFromChanged);
-          connect(&m_mainView, &MainView::NotifyShowOnlyErrorsChanged, &m_mapDownload, &MapDownloader::onShowOnlyErrorsChanged);
+          bool ok = (bool)connect(&m_mainView, &MainView::NotifyUrlChanged, &m_mapDownload, &MapDownloader::onUrlChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyLatitudeMinChanged, &m_mapDownload, &MapDownloader::onLatitudeMinChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyLatitudeMaxChanged, &m_mapDownload, &MapDownloader::onLatitudeMaxChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyLongitudeMinChanged, &m_mapDownload, &MapDownloader::onLongitudeMinChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyLongitudeMaxChanged, &m_mapDownload, &MapDownloader::onLongitudeMaxChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyZoomMinChanged, &m_mapDownload, &MapDownloader::onZoomMinChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyZoomMaxChanged, &m_mapDownload, &MapDownloader::onZoomMaxChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyDestinationDirChanged, &m_mapDownload, &MapDownloader::onDestinationDirChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyStopClicked, &m_mapDownload, &MapDownloader::onStopClicked);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyStartFromZoomChanged, &m_mapDownload, &MapDownloader::onStartFromZoomChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyStartFromTileXChanged, &m_mapDownload, &MapDownloader::onStartFromTileXChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyStartFromTileYChanged, &m_mapDownload, &MapDownloader::onStartFromTileYChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyStartFromChanged, &m_mapDownload, &MapDownloader::onStartFromChanged);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyShowOnlyErrorsChanged, &m_mapDownload, &MapDownloader::onShowOnlyErrorsChanged);
 
-          connect(&m_mainView, &MainView::NotifyDownloadClicked, &m_mapDownload, &MapDownloader::onDownload);
-          connect(&m_mainView, &MainView::NotifyCheckClicked, &m_mapDownload, &MapDownloader::onCheck);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyDownloadClicked, &m_mapDownload, &MapDownloader::onDownload);
+          ok &= (bool)connect(&m_mainView, &MainView::NotifyCheckClicked, &m_mapDownload, &MapDownloader::onCheck);
+
+          return ok;
     }
 
-    void MainViewManager::WireStatus()
+    bool MainViewManager::WireStatus()
     {
-         connect(&m_mapDownload, &MapDownloader::NotifyProcessFinished, &m_mainView, &MainView::onProcessFinished);
-         connect(&m_mapDownload, &MapDownloader::NotifyStatusMessage, &m_mainView, &MainView::onStatusMessage);
-         connect(&m_mapDownload, &MapDownloader::NotifyDownloadedStatusChanged, &m_mainView, &MainView::onDownloadedStatusChanged);
+         bool ok = (bool)connect(&m_mapDownload, &MapDownloader::NotifyProcessFinished, &m_mainView, &MainView::onProcessFinished);
+         ok &= (bool)connect(&m_mapDownload, &MapDownloader::NotifyStatusMessage, &m_mainView, &MainView::onStatusMessage);
+         ok &= (bool)connect(&m_mapDownload, &MapDownloader::NotifyDownloadedStatusChanged, &m_mainView, &MainView::onDownloadedStatusChanged);
 
+         return ok;
     }
 }
